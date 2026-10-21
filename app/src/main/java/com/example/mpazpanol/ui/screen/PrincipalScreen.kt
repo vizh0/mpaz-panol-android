@@ -26,36 +26,27 @@ fun PrincipalScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = "¡Bienvenido al Sistema Pañol TI!",
-                style = MaterialTheme.typography.headlineSmall
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Text(
-                text = "Sesión iniciada correctamente.",
-                color = Color.Gray
-            )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            Button(
-                onClick = {
-                    Toast.makeText(context, "Sesión cerrada correctamente", Toast.LENGTH_SHORT).show()
-                    onLogout()
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFC62828)
-                ),
-                modifier = Modifier.fillMaxWidth(0.8f)
+            // Botón de cerrar sesión en la parte superior
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.End
             ) {
-                Text("Cerrar Sesión", color = Color.White)
+                Button(
+                    onClick = {
+                        Toast.makeText(context, "Sesión cerrada correctamente", Toast.LENGTH_SHORT).show()
+                        onLogout()
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFC62828))
+                ) {
+                    Text("Cerrar Sesión", color = Color.White)
+                }
             }
+
+            // Muestra la pantalla del Catálogo justo abajo
+            CatalogoScreen()
         }
     }
 }
